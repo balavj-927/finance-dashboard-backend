@@ -44,7 +44,6 @@ const updateRecord = async (id, data) => {
 };
 
 const deleteRecord = async (id) => {
-  // Soft delete
   const record = await Record.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
   if (!record) throw new ApiError(404, "Record not found.");
   return { message: "Record deleted successfully." };

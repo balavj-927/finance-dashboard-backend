@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const recordSchema = new mongoose.Schema(
   {
     amount: {
@@ -47,13 +46,11 @@ const recordSchema = new mongoose.Schema(
     },
     isDeleted: {
       type: Boolean,
-      default: false, // Soft delete support
+      default: false, 
     },
   },
   { timestamps: true }
 );
-
-// Always exclude soft-deleted records from queries
 recordSchema.pre(/^find/, function () {
   this.find({ isDeleted: { $ne: true } });
 });

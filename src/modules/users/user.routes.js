@@ -7,7 +7,6 @@ const {
   getAllUsers, getUserById, updateUserRole, updateUserStatus, deleteUser,
 } = require("./user.controller");
 
-// All user management routes require admin
 router.use(protect, authorize("admin"));
 
 router.get("/", getAllUsers);
